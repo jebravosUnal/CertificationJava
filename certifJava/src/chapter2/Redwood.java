@@ -9,9 +9,9 @@ public class Redwood extends Tree {
     }
     void go(){
      go2(new Tree(), new Redwood());
-     Tree t = new Tree();
-     Redwood r = (Redwood) t;
-     go2(r, new Redwood());
+//     Tree t = new Tree();
+//     Redwood r = (Redwood) t;
+//     go2(r, new Redwood());
 //     go2((Redwood) new Tree(), new Redwood());
     }
     void go2(Tree t1, Redwood r1){
