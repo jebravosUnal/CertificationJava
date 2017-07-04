@@ -20,8 +20,8 @@ public class ZooKepper {
 
     void go(){
 //        Zebra m = new Zebra();
-//        Mammal m = new Zebra();
-        Mammal m = new Mammal();
+        Mammal m = new Zebra();
+//        Mammal m = new Mammal();
         //Polymorphism is only for instance variables
         //m.name from Mammal, since m references a Mammal Object
         //m.makeNoise from Zebra, since the compiler knows that m references a Zebra object even if the m Object is of type Mammal
