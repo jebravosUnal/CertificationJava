@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by EBR3556 on 30/06/2017.
@@ -8,27 +9,20 @@ import java.util.Calendar;
 public class General {
 
     public static void main(String[] args) {
-//        int[][] a = {{1, 2,}, {2, 3}};
-//
-//        System.out.println(a[0][0]);
-//        System.out.println(a[0][1]);
-//        System.out.println(a[1][0]);
-//        System.out.println(a[1][1]);
-//        Object o = a;
-//        int[][] t = (int[][]) o;
-//        System.out.println(t[0][0]);
-//        System.out.println(t[0][1]);
-//        System.out.println(t[1][0]);
-//        System.out.println(t[1][1]);
-//        System.out.println(A.A.points);
-        System.out.println("A values:");
-        System.out.println(A.values());
+        testInstanceOf();
+    }
 
-        System.out.println("B values:");
-        System.out.println(B.values());
-
-        LocalDate.of(2015, Month.APRIL, 12);
-
+    public static void testInstanceOf() {
+        Integer i = 1;
+        Number n = i;
+        int[] array = new int[1];
+        System.out.println("i istanceof Number ? " + (i instanceof Number));
+        System.out.println("n istanceof Integer ? " + (n instanceof Integer));
+        System.out.println("n istanceof Long ? " + (n instanceof Long));
+        System.out.println("n istanceof Object ? " + (n instanceof Object));
+        System.out.println("array istanceof Object ? " + (array instanceof Object));
+        System.out.println("null istanceof Object ? " + (null instanceof Object));
+//        System.out.println("A istanceof B ? " + (i instanceof Long)); //Incopatyble types: cannot cast Integer into Long
     }
 
     public enum A {
@@ -38,16 +32,16 @@ public class General {
             }
         };
 
-    private int points;
+        private int points;
 
-    A(int a){
-        points = a;
+        A(int a) {
+            points = a;
+        }
 
-    }
         public int a() {
             return 2;
         }
     }
 
-    public enum B {A,B,C}
+    public enum B {A, B, C}
 }
