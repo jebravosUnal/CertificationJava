@@ -9,7 +9,17 @@ import java.util.List;
 public class General {
 
     public static void main(String[] args) {
-        testInstanceOf();
+//        testInstanceOf();
+        testEquals();
+    }
+
+    public static void testEquals() {
+        if(new Long(1L).equals(new Long(1L))){
+            System.out.println("equals");
+        } else {
+            System.out.println("not equals");
+        }
+
     }
 
     public static void testInstanceOf() {
