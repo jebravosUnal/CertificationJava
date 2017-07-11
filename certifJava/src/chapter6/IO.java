@@ -2,11 +2,13 @@ package chapter6;
 
 import java.io.File;
 
+import static utils.Constants.*;
+
 /**
  * Created by EBR3556 on 11/07/2017.
  */
+
 public class IO {
-    private final static String ESTEBAN_PATH = "C:\\Users\\ebr3556\\Desktop\\Esteban\\";
     private static StringBuilder identation = new StringBuilder("");
 
     public static void main(String[] args) {
