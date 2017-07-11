@@ -11,13 +11,17 @@ public class Serializer {
 
     public static void main(String[] args) {
         Serializer serializer = new Serializer();
-        Animal animal = new Animal("El gato Felix");
+        Person catOwner = new Person("Esteban");
+        Cat cat = new Cat("El gato Felix");
+        cat.setOwner(catOwner);
         //
-        serializer.serialise(animal);
+        serializer.serialise(cat);
         //
         Animal deserializedAnimal = (Animal) serializer.deserialize(ESTEBAN_PATH + "animal.ser");
+        Cat deserializedCat = (Cat) deserializedAnimal;
         //
         System.out.println(deserializedAnimal.getName());
+        System.out.println(deserializedCat.getName() + " belongs to " + deserializedCat.getOwner().getName() );
     }
 
     public void serialise(Object object){
@@ -53,11 +57,35 @@ class Animal implements Serializable{
         this.name = name;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+}
+
+class Person extends Animal{
+
+    public Person(String name) {
+        super(name);
+    }
+}
+
+class Cat extends  Animal{
+
+    private Person owner;
+
+    Cat(String name) {
+        super(name);
+    }
+
+    public Person getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Person owner) {
+        this.owner = owner;
     }
 }
