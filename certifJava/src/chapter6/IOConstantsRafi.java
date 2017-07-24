@@ -10,6 +10,10 @@ import java.util.regex.Pattern;
  * Created by EBR3556 on 11/07/2017.
  */
 public class IOConstantsRafi {
+
+    private static Pattern pattern = Pattern.compile("[\"](.)*[{}]+[\"]");
+    private static Matcher matcher;
+
     public static void main(String[] args) {
         // write your code here
         if(args.length == 0){
@@ -48,17 +52,20 @@ public class IOConstantsRafi {
         }
     }
 
-    private static ArrayList<String> getRequestMappingValues(File file) throws FileNotFoundException {
+    private static List<String> getRequestMappingValues(File file) throws FileNotFoundException {
         System.out.println("------ request mappings ------");
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
-        Pattern pattern = Pattern.compile("[\"][a-z A-Z 0-9/{}]+[\"]");
+//        Pattern pattern = Pattern.compile("[\"](.)*[{}]+[\"]");
+//        Pattern pattern = Pattern.compile("[\"][a-z A-Z 0-9/{}]+[\"]");
         List<String> requestMappingList = new ArrayList<>();
         String line;
         try {
             while((line = br.readLine()) != null){
-                if(line.contains("@RequestMapping")){
-                    Matcher matcher = pattern.matcher(line);
+                if(line.contains("@RequestMapping") //
+                        && !line.startsWith("//")){ // It is not a commented line
+                    matcher = pattern.matcher(line);
+//                    Matcher matcher = pattern.matcher(line);
                     if(matcher.find()){
                         requestMappingList.add(matcher.group(0).replace("\"", ""));
                         System.out.println(requestMappingList.get(requestMappingList.size()-1));
@@ -70,6 +77,6 @@ public class IOConstantsRafi {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return requestMappingList;
     }
 }
